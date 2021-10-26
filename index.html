@@ -85,61 +85,61 @@
 
       <div class="instructions">
         <h3>Expose a server to the P2P network</h3>
-        <p><small>✨ REVERSE PROXY POWER ✨</small></p>
         <p>Let's say we have a web app running at <code>localhost:8080</code>:</p>
         <pre class="codebox">$ npx serve -p 8080</pre>
         <p>We can put this on the p2p network by calling <code>spork bind</code>:</p>
         <pre class="codebox">$ spork bind -p 8080
-<div class="light">Created temporary keypair, public key: whattzzuu5drxwdwi6xbijjf7yt56l5adzht7j7kjvfped7amova
-
+<div class="light">
 ======================
 Spork powers ACTIVATED
 
   - Mode: Reverse proxy
   - Listening on whattzzuu5drxwdwi6xbijjf7yt56l5adzht7j7kjvfped7amova
   - Proxying all traffic to localhost:8080
-======================
-
-If you're running an HTTP server, you can share the following link:
-
-  https://whattzzuu5drxwdwi6xbijjf7yt56l5adzht7j7kjvfped7amova.atek.app/
-
-This public gateway will tunnel directly to your spork!</div></pre>
+======================</div></pre>
         <p>As long as that spork command is running, our web app will be available at <code>whattzzuu5drxwdwi6xbijjf7yt56l5adzht7j7kjvfped7amova</code>.</p>
-        <p>Also notice that HTTP apps can use the <a href="https://atek.app/" title="Public Gateway">public gateway at atek.app</a>. Note, however, a public gateway will see the traffic so you lose end-to-end privacy.</p>
       </div>
 
       <div class="instructions">
         <h3>Access a server on the P2P network</h3>
-        <p><small>✨ FORWARD PROXY POWER ✨</small></p>
         <p>Let's say somebody has sporked their web app onto the p2p net at the pubkey <code>whattzzuu5drxwdwi6xbijjf7yt56l5adzht7j7kjvfped7amova</code>.</p>
         <p>We can create a local proxy to that app using <code>spork bind</code>:</p>
         <pre class="codebox">$ spork bind whattzzuu5drxwdwi6xbijjf7yt56l5adzht7j7kjvfped7amova -p 5555
-<div class="light">Created temporary keypair, public key: nhspq2iz4lclc6gnmh5yniyaevluz4t6dkdsg7w5sg546ea6ozeq
-
+<div class="light">
 ======================
 Spork powers ACTIVATED
 
- - Mode: forward proxy
+ - Mode: Forward proxy
  - Listening on localhost:5555
  - Proxying all traffic to whattzzuu5drxwdwi6xbijjf7yt56l5adzht7j7kjvfped7amova
 ======================</div></pre>
-        <p>Now we can CURL to that web app using <code>localhost:5555</code>.</p>
-        <pre class="codebox">$ curl localhost:5555
-<div class="light">&lt;!doctype html&gt;
-&lt;html&gt;
-  ...
-&lt;/html&gt;</div></pre>
-        <p>Note: That CURL connection is end-to-end encrypted!</p>
+        <p>Now we can access that server <code>localhost:5555</code>. Note: The connection is end-to-end encrypted!</p>
+        <p>If end-to-end encryption isn't important for your use-case, you can also use the <a href="https://atek.app/" title="Public Gateway">public gateway at atek.app</a>.</p>
       </div>
 
       <div class="instructions">
-        <h3>Create an HTTP gateway</h3>
-        <p><small>✨ MEGA FORWARD PROXY POWER ✨</small></p>
-        <p>We can run an HTTP gateway to p2p sockets with the <code>spork gateway</code> command.</p>
-        <pre class="codebox">$ spork gateway -p 6666
-<div class="light">Created temporary keypair, public key: ukblfcctbbfif2vijw3s77w6hk5maaemc4x5hou2a7txgfp5u4pq
+        <h3>Handy additional tools</h3>
+        
+        <h4><code>spork serve</code></h4>
+        <p>Serve a folder as a static website quickly with <code>spork serve</code>.</p>
+        <pre class="codebox">$ spork serve .
+<div class="light">
+======================
+Spork powers ACTIVATED
 
+  - Mode: Serve folder via HTTP
+  - Serving /Users/bob/my-website
+======================
+
+Links:
+
+  http://localhost:15034/
+  https://ckj7w33lzx6wbxqk53n3evbgwvoykrc3xesw2kwsfwuwua4doxiq.atek.app/</pre>
+
+        <h4><code>spork gateway</code></h4>
+        <p>We can run an open HTTP gateway to p2p sockets with the <code>spork gateway</code> command.</p>
+        <pre class="codebox">$ spork gateway -p 6666
+<div class="light">
 ======================
 Spork powers ACTIVATED
 
@@ -147,9 +147,7 @@ Spork powers ACTIVATED
  - Listening on localhost:6666
  - Proxing by subdomain to p2p sockets
 ======================</div></pre>
-        <p>Now we can access the <code>whattzzuu5drxwdwi6xbijjf7yt56l5adzht7j7kjvfped7amova</code> pubkey through our gateway by visiting <code>http://whattzzuu5drxwdwi6xbijjf7yt56l5adzht7j7kjvfped7amova.localhost:6666</code>.
-        <p>We can curl to that address by setting the host header manually:</p>
-        <pre class="codebox">$ curl localhost:6666 -H "Host: whattzzuu5drxwdwi6xbijjf7yt56l5adzht7j7kjvfped7amova.localhost"</pre>
+        <p>Now we can access any socket at <code>http://{pubkey}.localhost:6666</code>.</p>
       </div>
     </main>
     <div class="explanation" style="margin-bottom: 0">

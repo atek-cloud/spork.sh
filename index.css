@@ -111,6 +111,10 @@ main {
 
 .instructions {
   margin: 0 0 8rem;
+  border: 1px solid #fff;
+  border-radius: 0.25rem;
+  background: #22222b;
+  padding: 0 2rem;
 }
 
 .instructions h3 {
@@ -119,6 +123,10 @@ main {
   letter-spacing: 0.05rem;
   border-bottom: 1px solid #fff;
   padding-bottom: 0.5rem;
+}
+
+.instructions h4 code {
+  font-size: 1.5rem;
 }
 
 .instructions p {
@@ -202,6 +210,12 @@ a.button:hover {
   a.button {
     display: block;
     margin-bottom: 0.5rem;
+  }
+  .instructions {
+    margin: 0 0 4rem;
+    padding: 0;
+    border: 0;
+    background: none;
   }
 }
 
