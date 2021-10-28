@@ -137,7 +137,7 @@ Links:
   https://ckj7w33lzx6wbxqk53n3evbgwvoykrc3xesw2kwsfwuwua4doxiq.atek.app/</pre>
 
         <h4><code>spork gateway</code></h4>
-        <p>We can run an open HTTP gateway to p2p sockets with the <code>spork gateway</code> command.</p>
+        <p>Run an open HTTP gateway to p2p sockets with the <code>spork gateway</code> command.</p>
         <pre class="codebox">$ spork gateway -p 6666
 <div class="light">
 ======================
@@ -148,7 +148,15 @@ Spork powers ACTIVATED
  - Proxing by subdomain to p2p sockets
 ======================</div></pre>
         <p>Now we can access any socket at <code>http://{pubkey}.localhost:6666</code>.</p>
-      </div>
+
+        <h4><code>spork beam</code></h4>
+        <p>Create an encrypted network pipe between two devices with the <code>spork beam</code> command.</p>
+        <p>On device 1:</p>
+        <pre class="codebox">$ echo "Hello, world!" | spork beam<div class="light">▶ Run the following command to connect:
+▶   spork beam 5hbdbh7octaexk4o3amftc4r4xcsdr2fkiloinj7sbihm6svb2ea</div></pre>
+        <p>On device 2:</p>
+        <pre class="codebox">$ spork beam 5hbdbh7octaexk4o3amftc4r4xcsdr2fkiloinj7sbihm6svb2ea
+<div class="light">Hello, world!</div></pre>
     </main>
     <div class="explanation" style="margin-bottom: 0">
       <main>
